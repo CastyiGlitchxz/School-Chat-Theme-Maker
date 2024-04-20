@@ -3,7 +3,8 @@
 
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A simple theme maker">
   <title>Theme Editor</title>
   <link href="/..//static/css/style.css" rel="stylesheet" type="text/css" />
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -13,139 +14,81 @@
 <body>
 
   <div class="nav">
-    <i class="fa-solid fa-bars fa-xl" style="color: #ffffff; align-self: center; width: 9%; margin-left: 12px; margin-right: 21px;" onclick="OpenX();"></i>
+    <div style="display: flex; align-items: center; justify-content: space-between; width: 6%;">
+      <!-- <i class="fa-solid fa-bars fa-xl" style="color: #ffffff; align-self: center; width: 9%; margin-left: 12px; margin-right: 21px;" onclick="OpenProperties();"></i> -->
+      <i class="fa-solid fa-arrow-up-from-bracket fa-xl" style="color: #ffffff;"></i>
+    </div>
     <input type="text" placeholder="Project Name" value="Untitled Project" id="n_name">
     <div id="NavControlBox">
-      <button id="ShareButton">Share</button>
-      <button id="ExportButton">Export Theme</button>
+      <button id="ExportButton" onclick="showcode();">Export Theme</button>
     </div>
+  </div>
+
+  <div id="code">
+    
   </div>
 
   <div class="main">
     <div id="controls">
-      <div class="c_div">
-        <button class="c_btn">Themes</button>
-        <button class="c_btn">CSE</button>
-        <button class="c_btn">Code</button>
+      <div style="text-align: center; margin-top: 16px;">
+        <h3 id="menuOwner"></h3>
+        <div style="height: 100%; display: flex; justify-content: space-evenly;">
+          <button id="applyButton" class="PropertiesButton">Apply</button>
+          <button onclick="CloseProperties();" id="closeButton" class="PropertiesButton">Close</button>
+        </div>
       </div>
-      <hr id="c_hr">
       <div id="c_fh">
+        <div id="fh">
+          <div>
+            <div class="i_h">
+              <h5>Element</h5>
+              <div style="display: flex;">
+                <input type="text" placeholder="X" class="ValueBox">
+                <input type="text" placeholder="Y" class="ValueBox">
+              </div>
+              <div style="display: flex;">
+                <input type="text" placeholder="Width" class="ValueBox">
+                <input type="text" placeholder="Height" class="ValueBox">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="fh">
+          <div>
+            <div class="i_h">
+              <h5>Colors</h5>
+              <label for="body-color" id="ColorPicker">
+                <div class="ColorDisplay">             </div>
+                <p>Background Color</p>
+              </label>
 
-        <div id="fh">
-          <div>
-            <div id="fh_header">
-              <h3>CHAT</h3>
-              <div id="c_num_badge">
-                <p>5</p>
-              </div>
-            </div>
-            <div class="i_h">
-              <div class="c_item">
-                <input type="color" id="body-color">
-                <p>Background Color</p>
-              </div>
-              <div class="c_item">
-                <input type="color" id="sb-color">
-                <p>Send Button Color</p>
-              </div>
-              <div class="c_item">
-                <input type="color" id="chb-color">
-                <p>Chat Box Color</p>
-              </div>
-            </div>
-            <div class="i_h">
-              <div class="c_item">
-                <input type="color" id="s-color">
-                <p>Bottom Bar Color</p>
-              </div>
-              <div class="c_item">
-                <input type="color" id="t-color">
+              <label for="text-color" id="ColorPicker">
+                <div class="ColorDisplay">             </div>
                 <p>Text Color</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div id="fh">
-          <div>
-            <div id="fh_header">
-              <h3>SIDENAV</h3>
-              <div id="c_num_badge">
-                <p>3</p>
-              </div>
-            </div>
-            <div class="i_h">
-              <div class="c_item">
-                <input type="color" id="sn-color">
-                <p>Background Color</p>
-              </div>
-              <div class="c_item">
-                <input type="color" id="snb-color">
-                <p>☰ Color</p>
-              </div>
-              <div class="c_item">
-                <input type="color" id="snt-color">
-                <p>Text Color</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div id="fh">
-          <div>
-            <div id="fh_header">
-              <h3>ONLINE LIST</h3>
-              <div id="c_num_badge">
-                <p>4</p>
-              </div>
-            </div>
-            <div class="i_h">
-              <div class="c_item">
-                <input type="color" id="oul-color">
-                <p>Background Color</p>
-              </div>
-              <div class="c_item">
-                <input type="color" id="oult-color">
-                <p>Text Color</p>
-              </div>
-              <div class="c_item">
-                <input type="color" id="bdr-color">
+              </label>
+
+              <label for="body-color" id="ColorPicker">
+                <div class="ColorDisplay">             </div>
+                <p>Shadow Color</p>
+              </label>
+
+              <label for="border-color" id="ColorPicker">
+                <div class="ColorDisplay">             </div>
                 <p>Border Color</p>
-              </div>
-            </div>
-            <div class="i_h">
-              <div class="c_item">
-                <input type="color" id="shd-color">
-                <p>Shadow Color</p>
-              </div>
+              </label>
+                
+                <input type="color" id="body-color" style="display: none">
+                <input type="color" id="text-color" style="display: none">
+                <input type="color" id="border-color" style="display: none">
             </div>
           </div>
         </div>
         <div id="fh">
           <div>
-            <div id="fh_header">
-              <h3>TOPBAR</h3>
-              <div id="c_num_badge">
-                <p>4</p>
-              </div>
-            </div>
             <div class="i_h">
-              <div class="c_item">
-                <input type="color" id="tpb-color">
-                <p>Background Color</p>
-              </div>
-              <div class="c_item">
-                <input type="color" id="tpbt-color">
-                <p>Text Color</p>
-              </div>
-              <div class="c_item">
-                <input type="color" id="tpbdr-color">
-                <p>Dropdown Border Color</p>
-              </div>
-            </div>
-            <div class="i_h">
-              <div class="c_item">
-                <input type="color" id="tpbs-color">
-                <p>Shadow Color</p>
-              </div>
+              <h5>Layers</h5>
+              <input type="number" class="ValueBox" id="LayerOpacity" max="100" min="0" value="100" placeholder="Layer Opacity"/>
+              <button id="LayerProperties">Hide Layer</button>
             </div>
           </div>
         </div>
@@ -153,80 +96,62 @@
     </div>
 
     <div class="editor">
-
-
-
-
-
-
-
-
-
-
-  <div id="ChatMockup">
-
-
-    <div id="topbar">
-
-        <span id="topleft" style="font-size: 40px; cursor: pointer;  color: rgb(25, 32, 128);" onclick="openNav()">☰</span>
-        <h2 id="RoomDisplay" style="margin: 14.5px 0;">/e</h2>
-        <div class="AccountPopup">
-        <input type="image" id="pfpmenu" class="PictureBTN" name="pfpmenu" src="https://www6.school-chat.us/static/favicon.ico">
-        <div id="AccControls" class="AccControls" style="display: none;">
-                <a href="/logout">Logout</a>
-                <a href="/settings">Settings</a>
-                <a href="/#">Soon</a>
-            </div>
-        </div></div>
-        <div id="mySidenav" class="sidenav" style="background-color: rgb(17, 17, 17); width: 0px;">
-            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()" style="color: rgb(129, 129, 129);">×</a>
-            <hr style="border: 5px solid grey;">
-            <div>
-                <p>change the chat room you are in</p>
-                <div class="ChatRoomS">
-
+      <div id="ChatMockup">
+    
+    
+        <div id="topbar">
+    
+            <span id="topleft" style="font-size: 40px; cursor: pointer;  color: rgb(25, 32, 128);" onclick="openNav()">☰</span>
+            <h2 id="RoomDisplay" style="margin: 14.5px 0;">/e</h2>
+            <div class="AccountPopup">
+            <input type="image" id="pfpmenu" class="PictureBTN" name="pfpmenu" src="https://www6.school-chat.us/static/favicon.ico">
+            <div id="AccControls" class="AccControls" style="display: none;">
+                    <a href="/logout">Logout</a>
+                    <a href="/settings">Settings</a>
+                    <a href="/#">Soon</a>
                 </div>
-            </div>
-                <div id="extratext">
-
+            </div></div>
+            <div id="mySidenav" class="sidenav" style="background-color: rgb(17, 17, 17); width: 0px;">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()" style="color: rgb(129, 129, 129);">×</a>
+                <hr style="border: 5px solid grey;">
+                <div>
+                    <p>change the chat room you are in</p>
+                    <div class="ChatRoomS">
+    
+                    </div>
                 </div>
-                <br>
-                <br>
+                    <div id="extratext">
+    
+                    </div>
+                    <br>
+                    <br>
+            </div>
+        <div id="chat">
+          [Fri 03:30 PM]
+          <img class="pfp" src="https://media.discordapp.net/attachments/872276337707065425/1128048096195129435/5A183399-4AB9-4912-B870-2A65A0C8611F.png?ex=652d91a8&amp;is=651b1ca8&amp;hm=4ce96eeb9581fba845312ddf2799647249d12f43e37a9d43c38abee48561e410&amp;=&amp;width=571&amp;height=571">
+          <font color="#690e8b">Kokonoe</font>
+          (
+          <font class="Dev_colors-loop">Student&nbsp;Council&nbsp;President</font>
+          ) - 
+          <font color="#058cfa">This is a test message</font>
         </div>
-    <div id="chat">
-      [Fri 03:30 PM]
-      <img class="pfp" src="https://media.discordapp.net/attachments/872276337707065425/1128048096195129435/5A183399-4AB9-4912-B870-2A65A0C8611F.png?ex=652d91a8&amp;is=651b1ca8&amp;hm=4ce96eeb9581fba845312ddf2799647249d12f43e37a9d43c38abee48561e410&amp;=&amp;width=571&amp;height=571">
-      <font color="#690e8b">Kokonoe</font>
-      (
-      <font class="Dev_colors-loop">Student&nbsp;Council&nbsp;President</font>
-      ) - 
-      <font color="#058cfa">This is a test message</font>
-    </div>
-
-    <div id="sides">
-        <div id="chatbox">       
-            <input type="text" id="message" onkeypress="checkKey();" placeholder="type your message here" maxlength="250"><br>
-            <button id="send">Send</button>
+    
+        <div id="sides">
+            <div id="chatbox">       
+                <input type="text" id="message" onkeypress="checkKey();" placeholder="type your message here" maxlength="250"><br>
+                <button id="send">Send</button>
+            </div>
+        </div><br>
+    
+        <div class="activenav" id="activenav" style="background-color: rgb(12, 12, 12);">
+            <!-- <hr id="online_border"> -->
+            <div id="online_users"><font size="5%">Online: 1</font><br><br>Guest user<br></div>
         </div>
-    </div><br>
-
-    <div class="activenav" id="activenav" style="background-color: rgb(12, 12, 12);">
-        <!-- <hr id="online_border"> -->
-        <div id="online_users"><font size="5%">Online: 1</font><br><br>Guest user<br></div>
-    </div>
-
-            <h4 class="version">1.2</h4>
-
-
-  </div>
-
-
-
-
-
-
-
-
+    
+                <h4 class="version">1.2</h4>
+    
+    
+      </div>
     </div>
   </div>
 

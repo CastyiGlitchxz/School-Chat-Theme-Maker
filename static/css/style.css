@@ -36,6 +36,7 @@ html, body {
   width: 21.9%;
   display: inline-grid;
   align-content: stretch;
+  margin-left: -22%;
 }
 
 .c_div {
@@ -72,23 +73,22 @@ html, body {
 #c_fh {
   width: auto;
   height: 100%;
-  justify-content: center;
   display: inline-grid;
   align-content: stretch;
   overflow-y: auto;
 }
 
 #fh {
-  background: #394057;
-  width: 280px;
-  height: 239px;
+  background: transparent;
+  width: 100%;
+  height: 100%;
   border-radius: 7px;
-  margin-bottom: 13px;
 }
 
 .editor {
   width: 100%;
-  display: contents;
+  display: grid;
+  contain: content;
 }
 
 #n_name {
@@ -100,7 +100,7 @@ html, body {
 }
 
 .i_h {
-  display: flex;
+  display: grid;
 }
 
 .c_item {
@@ -119,22 +119,6 @@ html, body {
 .c_item:hover {
   background: #65748370;
   cursor: pointer;
-}
-
-#fh_header {
-  color: white;
-  display: flex;
-  margin: 12px;
-}
-
-#c_num_badge {
-  background: #353434;
-  border-radius: 3px;
-  width: 25px;
-  height: 16px;
-  text-align: center;
-  margin: 3px;
-  margin-left: 12px;
 }
 
 *{
@@ -211,6 +195,32 @@ html, body {
   justify-content: space-evenly;
 }
 
+#ColorPicker {
+  height: fit-content;
+  width: fit-content;
+  display: flex;
+  align-items: center;
+}
+
+#ColorPicker div {
+  height: 38px;
+  width: 38px;
+  border-radius: 100%;
+  border: 1px #c1c1c1 solid;
+}
+
+.ValueBox {
+  background: transparent;
+  border: 0;
+  outline: none;
+  border-bottom: 2px gray solid;
+  width: 120px;
+  height: 40px;
+  color: white;
+  padding-left: 11px;
+  margin-left: 12px;
+  margin-right: 15px;
+}
 
 /* After this is the css for the chat mockup */
 
@@ -233,7 +243,7 @@ html, body {
 
 #online_users {
     padding-left: 0.7%;
-    padding-top: 5%;
+    padding-top: 1.6%;
     color: #ffffff;
 }
 
@@ -272,18 +282,19 @@ html, body {
 }
 
 #chat {
-    z-index: 0;
+  z-index: 0;
   padding-left: 5%;
-    padding-right: 12%;
-    margin-left: 1.5%;
-    line-height: 40px;
-    padding-bottom: 9%;
-    margin-bottom: 2%;
-    margin-top: 14%;
-    padding-top: 9%;
-    word-wrap: break-word;
-    color: #dd7016;
-    width: 200%;
+  padding-right: 11%;
+  margin-left: -2.8%;
+  line-height: 40px;
+  padding-bottom: 9%;
+  margin-bottom: 2%;
+  margin-top: -1.1%;
+  padding-top: 9%;
+  word-wrap: break-word;
+  color: #dd7016;
+  width: 200%;
+  height: 91.9%;
 }
 
 #message {
@@ -307,7 +318,7 @@ html, body {
     /*border-top: 5px solid black;*/
     justify-content: center;
     display: flex;
-    height: 9%;
+    height: 9.6%;
     margin: 0px -0.7px;
     background: black;
 }
@@ -356,7 +367,7 @@ html, body {
 /* Nav Menu left */
 
 .sidenav {
-  height: 93%;
+  height: 100%;
   position: fixed;
   z-index: 1;
   top: 0;
@@ -366,8 +377,9 @@ html, body {
   padding-top: 57px;
   background: black;
     background-color: black;
+  background-color: black;
   scrollbar-width: thin;
-  margin: 50px 337px;
+  margin: 0 0.2%;
 }
 
 .sidenav a {
@@ -717,10 +729,40 @@ html, body {
   background: black;
   position: fixed;
   width: 100%;
-  height: 8%;
+  height: 8.6%;
   margin: 1.1px 1.3px;
   padding: 0px;
   display: flex;
   box-shadow: 0px -1px 44px 15px #191919;
   z-index: 1;
+}
+
+#applyButton {
+  width: 71%;
+}
+
+#closeButton {
+  width: 20%;
+}
+
+.PropertiesButton {
+  height: 17%;
+  border-radius: 10px;
+  border: 0px;
+  font-size: 17px;
+}
+
+#code {
+  position: fixed;
+  background: black;
+  z-index: 9;
+  width: 39%;
+  height: 37%;
+  justify-content: center;
+  display: none;
+  align-items: center;
+  border-radius: 30px;
+  border: 4px teal solid;
+  box-shadow: 0px 0px 17px 0px aliceblue;
+  margin: calc(21% - 9%) 32%;
 }
