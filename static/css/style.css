@@ -269,8 +269,7 @@ html, body {
     height:30px;
     width:30px;
     border-radius:100px;
-    overflow: hidden
-    dragable: false;
+    overflow: hidden;
     border: 2px solid #404040;
 }
 
@@ -754,15 +753,15 @@ html, body {
 
 #code {
   position: fixed;
-  background: black;
+  background: #16151c;
   z-index: 9;
   width: 39%;
   height: 37%;
   justify-content: center;
   display: none;
   align-items: center;
-  border-radius: 30px;
-  border: 4px teal solid;
+  border-radius: 15px;
+  border: 4px black solid;
   box-shadow: 0px 0px 17px 0px aliceblue;
   margin: calc(21% - 9%) 32%;
 }
