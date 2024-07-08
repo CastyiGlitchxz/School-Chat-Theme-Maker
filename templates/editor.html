@@ -14,9 +14,18 @@
 <body>
 
   <div class="nav">
-    <div style="display: flex; align-items: center; justify-content: space-between; width: 6%;">
+    <div id="nav_container">
       <!-- <i class="fa-solid fa-bars fa-xl" style="color: #ffffff; align-self: center; width: 9%; margin-left: 12px; margin-right: 21px;" onclick="OpenProperties();"></i> -->
-      <i class="fa-solid fa-arrow-up-from-bracket fa-xl" style="color: #ffffff;"></i>
+      <div id="toolbox">
+        <button onclick="setSelectionMode(0); CloseProperties();">
+          <i class="fa-solid fa-arrow-pointer" style="color: #feffff;"></i>
+        </button>
+
+        <button onclick="setSelectionMode(1);">
+          <i class="fa-solid fa-pencil" style="color: #feffff;"></i>
+        </button>
+      </div>
+      <h3 id="editmodeText">Selection:</h3>
     </div>
     <input type="text" placeholder="Project Name" value="Untitled Project" id="n_name">
     <div id="NavControlBox">
@@ -73,10 +82,10 @@
                 <p>Text Color</p>
               </label>
 
-              <!-- <label for="body-color" id="ColorPicker">
+              <label for="shadow-color" id="ColorPicker">
                 <div class="ColorDisplay"></div>
                 <p>Shadow Color</p>
-              </label> -->
+              </label>
 
               <label for="border-color" id="ColorPicker">
                 <div class="ColorDisplay"></div>
@@ -86,6 +95,7 @@
                 <input type="color" id="body-color" style="display: none">
                 <input type="color" id="text-color" style="display: none">
                 <input type="color" id="border-color" style="display: none">
+                <input type="color" id="shadow-color" style="display: none">
             </div>
           </div>
         </div>
@@ -108,7 +118,7 @@
         <div id="topbar">
     
             <span id="topleft" style="font-size: 40px; cursor: pointer;  color: rgb(25, 32, 128);" onclick="openNav()">☰</span>
-            <h2 id="RoomDisplay" style="margin: 14.5px 0;">/e</h2>
+            <h2 id="RoomDisplay" style="margin: 14.5px 0;">/Main</h2>
             <div class="AccountPopup">
             <input type="image" id="pfpmenu" class="PictureBTN" name="pfpmenu" src="https://www6.school-chat.us/static/favicon.ico">
             <div id="AccControls" class="AccControls" style="display: none;">
@@ -134,7 +144,7 @@
             </div>
         <div id="chat">
           [Fri 03:30 PM]
-          <img class="pfp" src="https://media.discordapp.net/attachments/872276337707065425/1128048096195129435/5A183399-4AB9-4912-B870-2A65A0C8611F.png?ex=652d91a8&amp;is=651b1ca8&amp;hm=4ce96eeb9581fba845312ddf2799647249d12f43e37a9d43c38abee48561e410&amp;=&amp;width=571&amp;height=571">
+          <img class="pfp" src="https://www6.school-chat.us/static/profiles/81b4a197-a670-4497-9c3e-08cb87f44737.png">
           <font color="#690e8b">Kokonoe</font>
           (
           <font class="Dev_colors-loop">Student&nbsp;Council&nbsp;President</font>

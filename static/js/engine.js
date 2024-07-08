@@ -46,6 +46,7 @@ let snwd = document.getElementById("sn-wd");
 
 let applyButton = document.getElementById("applyButton");
 let code = document.getElementById("code");
+let editmodeText = document.getElementById("editmodeText");
 
 // Don't be confused
 
@@ -107,16 +108,27 @@ function showcode() {
 
 // Controls Sidenav
 function openNav() {
-  if (window.screen.width <= 450) {
-    document.getElementById("mySidenav").style.width = "100%";
-  } else {
-    document.getElementById("mySidenav").style.width = "250px";
+  if (currentSelection != "Edit") {
+    if (window.screen.width <= 450) {
+      document.getElementById("mySidenav").style.width = "100%";
+    } else {
+      document.getElementById("mySidenav").style.width = "250px";
+    }
   }
 }
 
 function closeNav() {
     document.getElementById("mySidenav").style.width = "0";
 }
+
+const selectionMode = ["View", "Edit"];
+var currentSelection = selectionMode[0];
+
+const setSelectionMode = (modeInt) => {
+  currentSelection = selectionMode[modeInt];
+  editmodeText.innerHTML = currentSelection;
+}
+setSelectionMode(0)
 
 
 const AllContent = document.querySelectorAll("#ChatMockup");
@@ -127,69 +139,69 @@ function apply_default_theme() {
   
 }
 
+const properties = {
+  "Background Color": "disabled",
+  "Text Color": "disabled",
+  "Border Color": "disabled",
+  "Shadow Color": "disabled",
+};
+
 AllContent.forEach((element) => {
-  element.addEventListener("dblclick", (event) => {
-    element.classList.toggle("active");
+  element.addEventListener("click", (event) => {
+    if (currentSelection === "Edit") {
+      element.classList.toggle("active");
 
-    menuOwner.innerHTML = event.target.id;
+      menuOwner.innerHTML = event.target.id;
 
-    OpenProperties();
+      OpenProperties();
 
-    const CurrentElement = element;
-    var SelectedLayer = event.target.id;
-    const ColorBox = document.getElementById("body-color");
-    const textColor = document.getElementById("text-color");
-    const borderColor = document.getElementById("border-color");
-    const LayerProperties = document.getElementById("LayerProperties");
-    const LayerOpacity = document.getElementById("LayerOpacity");
-    const Chat = document.getElementById("ChatMockup");
-
-
-    console.log(SelectedLayer);
-
-    document.getElementsByClassName("ColorDisplay")[0].style.background = document.getElementById(`${SelectedLayer}`).style.background;
-
-    document.getElementsByClassName("ColorDisplay")[1].style.background = document.getElementById(`${SelectedLayer}`).style.color;
-
-    document.getElementsByClassName("ColorDisplay")[2].style.background = document.getElementById(`${SelectedLayer}`).style.shadowColor;
-
-    document.getElementsByClassName("ColorDisplay")[3].style.background = document.getElementById(`${SelectedLayer}`).style.borderColor;
-
-    applyButton.addEventListener("click", (event) => {
-      if (SelectedLayer == menuOwner.innerHTML) {
-        document.getElementById(SelectedLayer).style.background = ColorBox.value;
-        document.getElementById(SelectedLayer).style.color = textColor.value;
-        document.getElementById(SelectedLayer).style.borderColor = borderColor.value;
-        console.log(CurrentElement);
-        console.log(SelectedLayer);
+      var SelectedLayer = event.target.id;
+      const ColorBox = document.getElementById("body-color");
+      const textColor = document.getElementById("text-color");
+      const borderColor = document.getElementById("border-color");
+      const shadowColor = document.getElementById("shadow-color")
+      const LayerProperties = document.getElementById("LayerProperties");
+      const LayerOpacity = document.getElementById("LayerOpacity");
+      const Chat = document.getElementById("ChatMockup");
 
 
-        LayerProperties.addEventListener("click", (event) => {
-          document.getElementById(SelectedLayer).style.display = "none";
-        });
+      document.getElementsByClassName("ColorDisplay")[0].style.background = document.getElementById(`${SelectedLayer}`).style.background;
+      document.getElementsByClassName("ColorDisplay")[1].style.background = document.getElementById(`${SelectedLayer}`).style.color;
+      document.getElementsByClassName("ColorDisplay")[2].style.background = document.getElementById(`${SelectedLayer}`).style.shadowColor;
+      document.getElementsByClassName("ColorDisplay")[3].style.background = document.getElementById(`${SelectedLayer}`).style.borderColor;
 
-        setInterval(Update, 100);
+      applyButton.addEventListener("click", (event) => {
+        if (SelectedLayer == menuOwner.innerHTML) {
+          document.getElementById(SelectedLayer).style.background = ColorBox.value;
+          document.getElementById(SelectedLayer).style.color = textColor.value;
+          document.getElementById(SelectedLayer).style.borderColor = borderColor.value;
+          document.getElementById(SelectedLayer).style.boxShadow = shadowColor.value;
 
-        function Update() {
-          // event.target.style.background = ColorBox.value;
-          document.body.style.background = chat.style.background;
-          Chat.style.background = chat.style.background;
-          
-          event.target.style.opacity = LayerOpacity.value + "%";
+          LayerProperties.addEventListener("click", (event) => {
+            document.getElementById(SelectedLayer).style.display = "none";
+          });
+
+          setInterval(Update, 100);
+
+          function Update() {
+            // event.target.style.background = ColorBox.value;
+            document.body.style.background = chat.style.background;
+            Chat.style.background = chat.style.background;
+            
+            event.target.style.opacity = LayerOpacity.value + "%";
+          };
+
+          Update();
+
+          document.getElementsByClassName("ColorDisplay")[0].style.background = document.getElementById(`${SelectedLayer}`).style.background;
+          document.getElementsByClassName("ColorDisplay")[1].style.background = document.getElementById(`${SelectedLayer}`).style.color; 
+          document.getElementsByClassName("ColorDisplay")[2].style.background = document.getElementById(`${SelectedLayer}`).style.shadowColor;  
+          document.getElementsByClassName("ColorDisplay")[3].style.background = document.getElementById(`${SelectedLayer}`).style.borderColor;
         };
-
-        Update();
-      }
-    });
+      });
+    };
   });
 });
-
-// const properties = {
-//   "Background Color": disabled,
-//   "Text Color": disabled,
-//   "Border Color": disabled,
-//   "Shadow Color": disabled,
-// };
 
 document.title = theme_name1.value + " - Theme Editor";
 
